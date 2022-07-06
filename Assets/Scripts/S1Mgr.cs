@@ -1,16 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class S1Mgr : MonoBehaviour
 {
-    public Button btn1;
+    public Image square;
+    public Button btnChangeColor;
+    public Button btnSize;
+    public Button btnRotation;
 
     private void Awake()
     {
-        btn1.onClick.AddListener(Onbtn1Click);
+        btnChangeColor.onClick.AddListener(OnbtnChangeColor1Click);
+        btnSize.onClick.AddListener(OnbtnsizeClick);
+        btnRotation.onClick.AddListener(OnbtnRotationClick);
     }
 
     // Start is called before the first frame update
@@ -36,9 +44,27 @@ public class S1Mgr : MonoBehaviour
     {
     }
 
+    
+    
 //Function--------------------
-    public void Onbtn1Click()
+    public void OnbtnChangeColor1Click()
     {
         Debug.Log("hello!");
+        square.color = new Color(Random.Range(0.0f, 1.0f), 1, 0);
+    }
+
+    public void OnbtnsizeClick()
+    {
+        Debug.Log("size");
+        square.transform.localScale = new Vector3(2, 2, 2);
+    }
+
+    public void OnbtnRotationClick()
+    {
+        int x = 0;
+        int y = 360;
+        Debug.Log("rotation");
+        square.transform.rotation =
+            new quaternion(0, 0, Random.Range(x, y));
     }
 }
